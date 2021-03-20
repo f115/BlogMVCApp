@@ -165,6 +165,7 @@
   <ItemGroup>
     <Compile Include="BlogMVCApp\App_Start\RouteConfig.cs" />
     <Compile Include="BlogMVCApp\Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="BlogMVCApp\Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="BlogMVCApp\Controllers\AccountController.cs" />
     <Compile Include="BlogMVCApp\Areas\Admin\Data\LoginModel.cs" />
     <Compile Include="BlogMVCApp\Controllers\AboutController.cs" />
@@ -310,7 +311,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="BlogMVCApp\Areas\Admin\Controllers\" />
     <Folder Include="BlogMVCApp\Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
