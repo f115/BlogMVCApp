@@ -1,0 +1,395 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props" Condition="Exists('packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D27CE30C-A2E2-479D-AAA1-7B95604D452B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BlogMVCApp</RootNamespace>
+    <AssemblyName>BlogMVCApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44379</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <DockerLaunchUrl>http://{ServiceIPAddress}</DockerLaunchUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="BlogMVCApp\Content\css\animate.css" />
+    <Content Include="BlogMVCApp\Content\css\aos.css" />
+    <Content Include="BlogMVCApp\Content\css\bootstrap-datepicker.css" />
+    <Content Include="BlogMVCApp\Content\css\bootstrap.min.css" />
+    <Content Include="BlogMVCApp\Content\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="BlogMVCApp\Content\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="BlogMVCApp\Content\css\flaticon.css" />
+    <Content Include="BlogMVCApp\Content\css\icomoon.css" />
+    <Content Include="BlogMVCApp\Content\css\ionicons.min.css" />
+    <Content Include="BlogMVCApp\Content\css\jquery.timepicker.css" />
+    <Content Include="BlogMVCApp\Content\css\magnific-popup.css" />
+    <Content Include="BlogMVCApp\Content\css\open-iconic-bootstrap.min.css" />
+    <Content Include="BlogMVCApp\Content\css\owl.carousel.min.css" />
+    <Content Include="BlogMVCApp\Content\css\owl.theme.default.min.css" />
+    <Content Include="BlogMVCApp\Content\css\style.css" />
+    <Content Include="BlogMVCApp\Content\css\_text-hide.css" />
+    <Content Include="BlogMVCApp\Content\images\about.jpg" />
+    <Content Include="BlogMVCApp\Content\images\author.jpg" />
+    <Content Include="BlogMVCApp\Content\images\bg_1.jpg" />
+    <Content Include="BlogMVCApp\Content\images\default_pic.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_1.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_10.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_11.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_12.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_2.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_3.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_4.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_5.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_6.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_7.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_8.jpg" />
+    <Content Include="BlogMVCApp\Content\images\image_9.jpg" />
+    <Content Include="BlogMVCApp\Content\images\loc.png" />
+    <Content Include="BlogMVCApp\Content\images\person_1.jpg" />
+    <Content Include="BlogMVCApp\Content\images\person_2.jpg" />
+    <Content Include="BlogMVCApp\Content\images\person_3.jpg" />
+    <Content Include="BlogMVCApp\Content\images\person_4.jpg" />
+    <Content Include="BlogMVCApp\Fonts\flaticon\backup.txt" />
+    <Content Include="BlogMVCApp\Fonts\flaticon\font\flaticon.css" />
+    <Content Include="BlogMVCApp\Fonts\flaticon\font\flaticon.html" />
+    <Content Include="BlogMVCApp\Fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="BlogMVCApp\Fonts\icomoon\icomoon.svg" />
+    <Content Include="BlogMVCApp\Fonts\ionicons\css\ionicons.min.css" />
+    <Content Include="BlogMVCApp\Fonts\ionicons\fonts\ionicons.svg" />
+    <Content Include="BlogMVCApp\Fonts\open-iconic\open-iconic.svg" />
+    <Content Include="BlogMVCApp\Global.asax" />
+    <Content Include="BlogMVCApp\Scripts\aos.js" />
+    <Content Include="BlogMVCApp\Scripts\bootstrap.min.js" />
+    <Content Include="BlogMVCApp\Scripts\google-map.js" />
+    <Content Include="BlogMVCApp\Scripts\jquery-3.2.1.min.js" />
+    <Content Include="BlogMVCApp\Scripts\jquery-migrate-3.0.1.min.js" />
+    <Content Include="BlogMVCApp\Scripts\jquery.animateNumber.min.js" />
+    <Content Include="BlogMVCApp\Scripts\jquery.easing.1.3.js" />
+    <Content Include="BlogMVCApp\Scripts\jquery.magnific-popup.min.js" />
+    <Content Include="BlogMVCApp\Scripts\jquery.min.js" />
+    <Content Include="BlogMVCApp\Scripts\jquery.stellar.min.js" />
+    <Content Include="BlogMVCApp\Scripts\jquery.waypoints.min.js" />
+    <Content Include="BlogMVCApp\Scripts\main.js" />
+    <Content Include="BlogMVCApp\Scripts\owl.carousel.min.js" />
+    <Content Include="BlogMVCApp\Scripts\popper.min.js" />
+    <Content Include="BlogMVCApp\Scripts\range.js" />
+    <Content Include="BlogMVCApp\Scripts\scrollax.min.js" />
+    <Content Include="BlogMVCApp\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlogMVCApp\App_Start\RouteConfig.cs" />
+    <Compile Include="BlogMVCApp\Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="BlogMVCApp\Controllers\AccountController.cs" />
+    <Compile Include="BlogMVCApp\Areas\Admin\Data\LoginModel.cs" />
+    <Compile Include="BlogMVCApp\Controllers\AboutController.cs" />
+    <Compile Include="BlogMVCApp\Controllers\ArticlesController.cs" />
+    <Compile Include="BlogMVCApp\Controllers\CommentsController.cs" />
+    <Compile Include="BlogMVCApp\Controllers\ContactController.cs" />
+    <Compile Include="BlogMVCApp\Controllers\FashionController.cs" />
+    <Compile Include="BlogMVCApp\Controllers\HomeController.cs" />
+    <Compile Include="BlogMVCApp\Controllers\MenusController.cs" />
+    <Compile Include="BlogMVCApp\Controllers\TravelController.cs" />
+    <Compile Include="BlogMVCApp\Data\Article.cs" />
+    <Compile Include="BlogMVCApp\Data\Author.cs" />
+    <Compile Include="BlogMVCApp\Data\BlogDbContext.cs" />
+    <Compile Include="BlogMVCApp\Data\Category.cs" />
+    <Compile Include="BlogMVCApp\Data\Comment.cs" />
+    <Compile Include="BlogMVCApp\Data\Menu.cs" />
+    <Compile Include="BlogMVCApp\Data\Tag.cs" />
+    <Compile Include="BlogMVCApp\Data\User.cs" />
+    <Compile Include="BlogMVCApp\Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Infastracture\DbContextExtensions.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202102191841485_Initial.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202102191841485_Initial.designer.cs">
+      <DependentUpon>202102191841485_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\202102191946089_MenuUpdated.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202102191946089_MenuUpdated.designer.cs">
+      <DependentUpon>202102191946089_MenuUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\202102201643492_ActicleTitleMaxLengthIncreased.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202102201643492_ActicleTitleMaxLengthIncreased.designer.cs">
+      <DependentUpon>202102201643492_ActicleTitleMaxLengthIncreased.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\202102261735241_CategoryUpdated_ArticlesAdded.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202102261735241_CategoryUpdated_ArticlesAdded.designer.cs">
+      <DependentUpon>202102261735241_CategoryUpdated_ArticlesAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\202102280848514_SomePartialsAdded.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202102280848514_SomePartialsAdded.designer.cs">
+      <DependentUpon>202102280848514_SomePartialsAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\202102281329203_ToAuthorAddedProPic_Description.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202102281329203_ToAuthorAddedProPic_Description.designer.cs">
+      <DependentUpon>202102281329203_ToAuthorAddedProPic_Description.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\202103040739501_GetPaginatableArticlesData_added.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202103040739501_GetPaginatableArticlesData_added.designer.cs">
+      <DependentUpon>202103040739501_GetPaginatableArticlesData_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\202103060810026_ArticleUpdated.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202103060810026_ArticleUpdated.Designer.cs">
+      <DependentUpon>202103060810026_ArticleUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\202103061603300_AuthorChanged.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202103061603300_AuthorChanged.Designer.cs">
+      <DependentUpon>202103061603300_AuthorChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\202103061700483_DbOpdated.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202103061700483_DbOpdated.Designer.cs">
+      <DependentUpon>202103061700483_DbOpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\202103070740037_Comment_User_Updated.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202103070740037_Comment_User_Updated.Designer.cs">
+      <DependentUpon>202103070740037_Comment_User_Updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\202103121740438_CommentUpdated_UserImage_ArticleId.cs" />
+    <Compile Include="BlogMVCApp\Migrations\202103121740438_CommentUpdated_UserImage_ArticleId.Designer.cs">
+      <DependentUpon>202103121740438_CommentUpdated_UserImage_ArticleId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BlogMVCApp\Migrations\Configuration.cs" />
+    <Compile Include="BlogMVCApp\Models\ArticleDetailsModel.cs" />
+    <Compile Include="BlogMVCApp\Models\ArticleIndexModel.cs" />
+    <Compile Include="BlogMVCApp\Models\ArticlePopularModel.cs" />
+    <Compile Include="BlogMVCApp\Models\ArticleTravelModel.cs" />
+    <Compile Include="BlogMVCApp\Models\AuthorModel.cs" />
+    <Compile Include="BlogMVCApp\Models\CategoryModel.cs" />
+    <Compile Include="BlogMVCApp\Models\CommentModel.cs" />
+    <Compile Include="BlogMVCApp\Models\TagModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BlogMVCApp\Views\web.config" />
+    <Content Include="BlogMVCApp\Fonts\flaticon\.DS_Store" />
+    <Content Include="BlogMVCApp\Fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="BlogMVCApp\Fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="BlogMVCApp\Fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="BlogMVCApp\Fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="BlogMVCApp\Fonts\flaticon\license\license.pdf" />
+    <Content Include="BlogMVCApp\Fonts\icomoon\icomoon.eot" />
+    <Content Include="BlogMVCApp\Fonts\icomoon\icomoon.ttf" />
+    <Content Include="BlogMVCApp\Fonts\icomoon\icomoon.woff" />
+    <Content Include="BlogMVCApp\Fonts\ionicons\css\_ionicons.scss" />
+    <Content Include="BlogMVCApp\Fonts\ionicons\fonts\.DS_Store" />
+    <Content Include="BlogMVCApp\Fonts\ionicons\fonts\ionicons.eot" />
+    <Content Include="BlogMVCApp\Fonts\ionicons\fonts\ionicons.ttf" />
+    <Content Include="BlogMVCApp\Fonts\ionicons\fonts\ionicons.woff" />
+    <Content Include="BlogMVCApp\Fonts\ionicons\fonts\ionicons.woff2" />
+    <Content Include="BlogMVCApp\Fonts\open-iconic\open-iconic.eot" />
+    <Content Include="BlogMVCApp\Fonts\open-iconic\open-iconic.otf" />
+    <Content Include="BlogMVCApp\Fonts\open-iconic\open-iconic.ttf" />
+    <Content Include="BlogMVCApp\Fonts\open-iconic\open-iconic.woff" />
+    <Content Include="BlogMVCApp\Areas\Admin\Views\web.config" />
+    <Content Include="BlogMVCApp\Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="BlogMVCApp\Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="BlogMVCApp\Areas\Admin\Views\Shared\_Validation.cshtml" />
+    <None Include="BlogMVCApp\Dockerfile" />
+    <None Include="BlogMVCApp\.dockerignore">
+      <DependentUpon>Dockerfile</DependentUpon>
+    </None>
+    <None Include="BlogMVCApp\packages.config" />
+    <Content Include="BlogMVCApp\Views\Home\Index.cshtml" />
+    <Content Include="BlogMVCApp\Views\Shared\_Layout.cshtml" />
+    <Content Include="BlogMVCApp\Views\Home\Travel.cshtml" />
+    <Content Include="BlogMVCApp\Views\Menus\AllMenus.cshtml" />
+    <Content Include="BlogMVCApp\Views\Shared\_NewsLetterPartial.cshtml" />
+    <Content Include="BlogMVCApp\Views\Shared\FooterPartial.cshtml" />
+    <Content Include="BlogMVCApp\Views\Shared\_SingleArticlePartial.cshtml" />
+    <Content Include="BlogMVCApp\Views\Home\Categories.cshtml" />
+    <Content Include="BlogMVCApp\Views\Home\Tags.cshtml" />
+    <Content Include="BlogMVCApp\Views\Home\PopularArticle.cshtml" />
+    <Content Include="BlogMVCApp\Views\Shared\_ArchivesPartial.cshtml" />
+    <Content Include="BlogMVCApp\Views\Shared\_SideBarNewsLetter.cshtml" />
+    <Content Include="BlogMVCApp\Views\Shared\_SideBarParagraphBottom.cshtml" />
+    <Content Include="BlogMVCApp\Views\Shared\_SideBarSearchTop.cshtml" />
+    <Content Include="BlogMVCApp\Views\Fashion\Index.cshtml" />
+    <Content Include="BlogMVCApp\Views\Travel\Index.cshtml" />
+    <Content Include="BlogMVCApp\Views\Shared\_SingleArticleTravelPartial.cshtml" />
+    <Content Include="BlogMVCApp\Views\Home\Error.cshtml" />
+    <Content Include="BlogMVCApp\Views\Articles\Details.cshtml" />
+    <Content Include="BlogMVCApp\Views\Shared\_CommentPartial.cshtml" />
+    <Content Include="BlogMVCApp\Views\Shared\_CommentsFormPartial.cshtml" />
+    <Content Include="BlogMVCApp\Views\About\Index.cshtml" />
+    <Content Include="BlogMVCApp\Views\Contact\Index.cshtml" />
+    <None Include="BlogMVCApp\Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="BlogMVCApp\Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="README.md" />
+    <Content Include="LICENSE" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="BlogMVCApp\Areas\Admin\Controllers\" />
+    <Folder Include="BlogMVCApp\Views\Comments\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202102191841485_Initial.resx">
+      <DependentUpon>202102191841485_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202102191946089_MenuUpdated.resx">
+      <DependentUpon>202102191946089_MenuUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202102201643492_ActicleTitleMaxLengthIncreased.resx">
+      <DependentUpon>202102201643492_ActicleTitleMaxLengthIncreased.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202102261735241_CategoryUpdated_ArticlesAdded.resx">
+      <DependentUpon>202102261735241_CategoryUpdated_ArticlesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202102280848514_SomePartialsAdded.resx">
+      <DependentUpon>202102280848514_SomePartialsAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202102281329203_ToAuthorAddedProPic_Description.resx">
+      <DependentUpon>202102281329203_ToAuthorAddedProPic_Description.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202103040739501_GetPaginatableArticlesData_added.resx">
+      <DependentUpon>202103040739501_GetPaginatableArticlesData_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202103060810026_ArticleUpdated.resx">
+      <DependentUpon>202103060810026_ArticleUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202103061603300_AuthorChanged.resx">
+      <DependentUpon>202103061603300_AuthorChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202103061700483_DbOpdated.resx">
+      <DependentUpon>202103061700483_DbOpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202103070740037_Comment_User_Updated.resx">
+      <DependentUpon>202103070740037_Comment_User_Updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlogMVCApp\Migrations\202103121740438_CommentUpdated_UserImage_ArticleId.resx">
+      <DependentUpon>202103121740438_CommentUpdated_UserImage_ArticleId.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51602</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44379/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets'))" />
+  </Target>
+  <Import Project="packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets" Condition="Exists('packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
